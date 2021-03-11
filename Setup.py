@@ -1,4 +1,5 @@
 import os
+import sys
 
 try:
     import wget
@@ -8,17 +9,22 @@ except ImportError:
 
 CURR_DIR = os.path.dirname(os.path.realpath(__file__))
 
-Decoder = "https://github.com/ExpiredBeatle49/Encrypter/releases/download/2.0/Decode.py"
-Encoder = "https://github.com/ExpiredBeatle49/Encrypter/releases/download/2.0/Encode.py"
+Decoder = "https://pastebin.com/raw/A9skHdKf"
+Encoder = "https://pastebin.com/raw/CLqRJNGe"
 
-try:
-    wget.download(Encoder, CURR_DIR + "/Encoder.py")
-except:
-    os.remove(CURR_DIR + "/Encoder")
+De = os.path.isfile(CURR_DIR + "/Decoder.py")
+En = os.path.isfile(CURR_DIR + "/Encoder.py")
+
+if En == "True":
+    os.remove(CURR_DIR + "/Encoder.py")
     wget.download(Encoder, CURR_DIR + "/Encoder.py")
 
-try:
-    wget.download(Decoder, CURR_DIR + "/Decoder.py")
-except:
+if En == "False":
+    wget.download(Encoder, CURR_DIR + "/Encoder.py")
+
+if De == "True":
     os.remove(CURR_DIR + "/Decoder")
     wget.download(Encoder, CURR_DIR + "/Decoder.py")
+
+if De == "False":
+    wget.download(Decoder, CURR_DIR + "/Decoder.py")
