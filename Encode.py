@@ -16,7 +16,6 @@ try:
     Save = open(File_name + ".bin", 'xb')
 except:
     Save = open(File_name + ".bin", 'wb')
-
 Save.write(File)
 
 File_open.close()
